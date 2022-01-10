@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         requestQueue = VolleySingleton.getmInstance(this).getRequestQueue();
 
         heroList = new ArrayList<>();
-      
+
         fetchMovies();
     }
 
