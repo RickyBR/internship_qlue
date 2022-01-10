@@ -4,7 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -25,18 +29,21 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView rv_hero;
     private RequestQueue requestQueue;
     private List<Hero> heroList;
+    HeroAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         rv_hero = findViewById(R.id.rv_hero);
         rv_hero.setHasFixedSize(true);
         rv_hero.setLayoutManager(new LinearLayoutManager(this));
+        rv_hero.setAdapter(adapter);
         requestQueue = VolleySingleton.getmInstance(this).getRequestQueue();
 
         heroList = new ArrayList<>();
-
+      
         fetchMovies();
     }
 
